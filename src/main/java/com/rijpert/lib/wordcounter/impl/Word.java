@@ -21,6 +21,11 @@ public record Word(String word) {
         }
     }
 
+    /**
+     * Executes a case-insensitive compare between two words
+     * @param other the reference object with which to compare.
+     * @return true if the words are equal
+     */
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -32,6 +37,10 @@ public record Word(String word) {
         return this.word.equalsIgnoreCase(((Word)other).word);
     }
 
+    /**
+     * Get the hashcode for the word
+     * @return the hashcode for the word, which is the same regardsless of case
+     */
     @Override
     public int hashCode() {
         return Objects.hash(word.toLowerCase());
