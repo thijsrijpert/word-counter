@@ -1,4 +1,4 @@
-package com.rijpert.lib.wordcounter.impl;
+package com.rijpert.lib.wordcounter;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Represents a single case-insensitive word, only ASCII letters are supported
  * @param word the ascii word
  */
-public record Word(String word) {
+record Word(String word) {
 
     private static final Pattern PATTERN = Pattern.compile("^[a-zA-Z]+$");
 

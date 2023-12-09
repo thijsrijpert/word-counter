@@ -1,7 +1,4 @@
-package com.rijpert.lib.wordcounter.impl;
-
-import com.rijpert.lib.wordcounter.WordFrequency;
-import com.rijpert.lib.wordcounter.WordFrequencyAnalyzer;
+package com.rijpert.lib.wordcounter;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
+class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
 
     @Override
     public int calculateHighestFrequency(String text) {

@@ -1,11 +1,11 @@
-package com.rijpert.lib.wordcounter.impl;
+package com.rijpert.lib.wordcounter;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-public record Text(List<Word> words) {
+record Text(List<Word> words) {
 
-    public static Text parse(String text) {
+    static Text parse(String text) {
         return new Text(Stream.of(text.split("\\W"))
                 .map(Word::new)
                 .toList());
