@@ -4,7 +4,9 @@ import com.rijpert.lib.wordcounter.WordFrequency;
 import com.rijpert.lib.wordcounter.WordFrequencyAnalyzer;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
 
@@ -33,6 +35,15 @@ public class WordFrequencyAnalyserImpl implements WordFrequencyAnalyzer {
 
     @Override
     public List<WordFrequency> calculateMostFrequentNWords(String text, int n) {
-        return null;
+        return calculateMostFrequentNWords(Text.parse(text), n);
+    }
+
+    public List<WordFrequency> calculateMostFrequentNWords(Text text, int n) {
+        return text.words().stream()
+                .map(word -> WordFrequencyImpl.create(word, calculateFrequencyForWord(text, word)))
+                .sorted(Comparator.comparingInt(WordFrequency::getFrequency))
+                .limit(n)
+                .collect(Collectors.toList());
+
     }
 }

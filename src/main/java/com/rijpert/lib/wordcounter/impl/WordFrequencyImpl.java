@@ -8,7 +8,7 @@ import com.rijpert.lib.wordcounter.WordFrequency;
  * @param word The word this frequency was calculated for.
  * @param frequency The frequency this word has in a text.
  */
-public record WordFrequencyImpl(Word word, int frequency) implements WordFrequency {
+record WordFrequencyImpl(Word word, int frequency) implements WordFrequency {
 
     @Override
     public String getWord() {
@@ -18,5 +18,9 @@ public record WordFrequencyImpl(Word word, int frequency) implements WordFrequen
     @Override
     public int getFrequency() {
         return frequency;
+    }
+
+    static WordFrequency create(Word word, int frequency) {
+        return new WordFrequencyImpl(word, frequency);
     }
 }
