@@ -9,10 +9,14 @@ import java.util.regex.Pattern;
  */
 public record Word(String word) {
 
-    private static final Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
+    private static final Pattern PATTERN = Pattern.compile("^[a-zA-Z]+$");
 
+    /**
+     * Validate that the word only uses ascii letters
+     * @param word the ascii word
+     */
     public Word {
-        if(!pattern.matcher(word).matches()) {
+        if(!PATTERN.matcher(word).matches()) {
             throw new IllegalArgumentException("A Word should only contain ASCII letters");
         }
     }
