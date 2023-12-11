@@ -29,11 +29,11 @@ public class AnalyserApiBean implements AnalyserApi {
     @Override
     public CalculateHighestFrequencyForWordDTO calculateFrequencyForWord(String searchKey, TextDTO textDTO) {
 
-        logger.debug("Calculating the frequency of searchKey {} in text", searchKey);
+        logger.info("Calculating the frequency of searchKey {} in text", searchKey);
 
         int frequency = wordFrequencyAnalyzer.calculateFrequencyForWord(textDTO.getContent(), searchKey);
 
-        logger.debug("Found frequency {} for searchKey {}", frequency, searchKey);
+        logger.info("Found frequency {} for searchKey {}", frequency, searchKey);
 
         return new CalculateHighestFrequencyForWordDTO()
                 .frequency(frequency);
@@ -42,11 +42,11 @@ public class AnalyserApiBean implements AnalyserApi {
     @Override
     public CalculateHighestFrequencyDTO calculateHighestFrequency(TextDTO textDTO) {
 
-        logger.debug("Calculating the searchKey with the highest frequency");
+        logger.info("Calculating the searchKey with the highest frequency");
 
         int frequency = wordFrequencyAnalyzer.calculateHighestFrequency(textDTO.getContent());
 
-        logger.debug("Found the highest frequency {} for the text", frequency);
+        logger.info("Found the highest frequency {} for the text", frequency);
 
         return new CalculateHighestFrequencyDTO()
                 .frequency(frequency);
@@ -54,14 +54,14 @@ public class AnalyserApiBean implements AnalyserApi {
 
     @Override
     public List<CalculateMostFrequentNWordsDTO> calculateMostFrequentNWords(Integer limit, TextDTO textDTO) {
-        logger.debug("Calculating the top {} searchKeys with the highest frequency", limit);
+        logger.info("Calculating the top {} searchKeys with the highest frequency", limit);
 
         List<WordFrequency> results = wordFrequencyAnalyzer.calculateMostFrequentNWords(textDTO.getContent(), limit);
         AtomicInteger i = new AtomicInteger();
 
         return results.stream()
                 .map(this::convertToDTO)
-                .peek(word -> logger.debug("Found frequency {} for the searchKey {}, n = {}", word.getFrequency(), word.getName(), i.getAndIncrement()))
+                .peek(word -> logger.info("Found frequency {} for the searchKey {}, n = {}", word.getFrequency(), word.getName(), i.getAndIncrement()))
                 .toList();
     }
 

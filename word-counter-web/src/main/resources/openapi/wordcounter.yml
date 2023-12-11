@@ -8,6 +8,7 @@ paths:
       summary: Calculate the frequency of the word that occurs the most in this text.
       operationId: calculateHighestFrequency
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -21,6 +22,12 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/CalculateHighestFrequencyDTO'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
   /calculateFrequencyForWord:
     get:
       summary: Calculate the frequency of occurrence for a specific word in this text.
@@ -33,6 +40,7 @@ paths:
           required: true
           description: The word to calculate the frequency for
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -46,6 +54,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CalculateHighestFrequencyForWordDTO'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorDTO'
   /calculateMostFrequentNWords:
     get:
       summary: Calculate the frequency of the words that occur the most in this text.
@@ -56,9 +72,11 @@ paths:
           schema:
             type: integer
             format: int32
+            minimum: 1
           required: true
           description: The word to calculate the frequency for
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -74,6 +92,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CalculateMostFrequentNWordsDTO'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorDTO'
 components:
   schemas:
     TextDTO:
@@ -83,6 +109,7 @@ components:
       properties:
         content:
           type: string
+          minLength: 1
     CalculateHighestFrequencyDTO:
       type: object
       required:
@@ -110,14 +137,17 @@ components:
           format: int32
         name:
           type: string
-    Error:
+    ErrorDTO:
       type: object
       required:
         - code
         - message
       properties:
         code:
-          type: integer
-          format: int32
+          type: string
         message:
+          type: string
+        property:
+          type: string
+        invalidValue:
           type: string
