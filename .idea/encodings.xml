@@ -5,5 +5,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/word-counter-lib/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/word-counter-lib/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/word-counter-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/word-counter-web/src/main/resources" charset="UTF-8" />
   </component>
 </project>

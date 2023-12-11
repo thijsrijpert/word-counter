@@ -11,28 +11,82 @@
 
   <modules>
     <module>word-counter-lib</module>
-    <module>word-counter-api</module>
+    <module>word-counter-web</module>
   </modules>
       
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <spring-boot.version>3.1.6</spring-boot.version>
+    <slf4j.version>2.0.9</slf4j.version>
+    <jackson.version>2.15.3</jackson.version>
+    <jakarta-validation.version>3.0.2</jakarta-validation.version>
+    <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+    <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+    <junit.version>5.10.1</junit.version>
+    <assertj.version>3.24.2</assertj.version>
   </properties>
       
   <dependencyManagement>
     <dependencies>
 
+      <!-- Spring Boot Dependencies -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <!-- Jackson -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <!-- OpenAPI -->
+      <dependency>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta-validation.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openapitools</groupId>
+        <artifactId>jackson-databind-nullable</artifactId>
+        <version>${jackson-databind-nullable.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>${springdoc-openapi-ui.version}</version>
+      </dependency>
+
+      <!-- Logging & Monitoring -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+
       <!-- Test Dependencies -->
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
-        <version>5.10.1</version>
+        <version>${junit.version}</version>
       </dependency>
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>3.24.2</version>
+        <version>${assertj.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

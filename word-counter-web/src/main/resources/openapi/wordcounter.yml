@@ -1,0 +1,123 @@
+openapi: "3.0.0"
+info:
+  title: WordCounterRpcApi
+  version: 1.0.0
+paths:
+  /calculateHighestFrequency:
+    get:
+      summary: Calculate the frequency of the word that occurs the most in this text.
+      operationId: calculateHighestFrequency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextDTO'
+      tags:
+        - analyser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/CalculateHighestFrequencyDTO'
+  /calculateFrequencyForWord:
+    get:
+      summary: Calculate the frequency of occurrence for a specific word in this text.
+      operationId: calculateFrequencyForWord
+      parameters:
+        - name: searchKey
+          in: query
+          schema:
+            type: string
+          required: true
+          description: The word to calculate the frequency for
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextDTO'
+      tags:
+        - analyser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateHighestFrequencyForWordDTO'
+  /calculateMostFrequentNWords:
+    get:
+      summary: Calculate the frequency of the words that occur the most in this text.
+      operationId: calculateMostFrequentNWords
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+          required: true
+          description: The word to calculate the frequency for
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextDTO'
+      tags:
+        - analyser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalculateMostFrequentNWordsDTO'
+components:
+  schemas:
+    TextDTO:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+    CalculateHighestFrequencyDTO:
+      type: object
+      required:
+        - frequency
+      properties:
+        frequency:
+          type: integer
+          format: int32
+    CalculateHighestFrequencyForWordDTO:
+      type: object
+      required:
+        - frequency
+      properties:
+        frequency:
+          type: integer
+          format: int32
+    CalculateMostFrequentNWordsDTO:
+      type: object
+      required:
+        - frequency
+        - name
+      properties:
+        frequency:
+          type: integer
+          format: int32
+        name:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
