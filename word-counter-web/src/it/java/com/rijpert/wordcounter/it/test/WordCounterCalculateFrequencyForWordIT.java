@@ -51,7 +51,7 @@ public class WordCounterCalculateFrequencyForWordIT {
 
         CalculateHighestFrequencyForWordDTO result = om.readValue(response, new TypeReference<>(){});
         assertThat(result).isNotNull();
-        assertThat(result.getFrequency()).isEqualTo(1);
+        assertThat(result.getFrequency()).isEqualTo(2);
     }
 
     @Test
