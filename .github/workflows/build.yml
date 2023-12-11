@@ -19,9 +19,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build
-      run: mvn --batch-mode -DskipTests package
+      run: mvn --batch-mode -DskipTests install
     - name: Test
-      run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      run: mvn --batch-mode -Dmaven.test.failure.ignore=true install
     - name: Report
       uses: dorny/test-reporter@v1
       if: always()
