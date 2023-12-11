@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Represents a single case-insensitive word, only ASCII letters are supported
  * @param word the ascii word
  */
-record Word(String word) {
+record Word(String word, String wordLowerCase) {
 
     private static final Pattern PATTERN = Pattern.compile("^[a-zA-Z]+$");
 
@@ -15,26 +15,32 @@ record Word(String word) {
      * Validate that the word only uses ascii letters
      * @param word the ascii word
      */
-    public Word {
+    public Word(String word) {
+        this(word, word.toLowerCase());
         if(!PATTERN.matcher(word).matches()) {
-            throw new IllegalArgumentException("A Word should only contain ASCII letters");
+            throw new IllegalArgumentException("A Word should only contain ASCII letters:" + word);
         }
+    }
+
+    public String word() {
+        return wordLowerCase;
     }
 
     /**
      * Executes a case-insensitive compare between two words
-     * @param other the reference object with which to compare.
+     * @param o the reference object with which to compare.
      * @return true if the words are equal
      */
     @Override
-    public boolean equals(Object other) {
-        if (this == other) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (other == null || getClass() != other.getClass()) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return this.word.equalsIgnoreCase(((Word)other).word);
+        Word other = (Word)o;
+        return this.word().equals(other.word());
     }
 
     /**
@@ -43,6 +49,6 @@ record Word(String word) {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(word.toLowerCase());
+        return Objects.hash(word());
     }
 }
