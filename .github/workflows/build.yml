@@ -27,7 +27,15 @@ jobs:
       uses: dorny/test-reporter@v1.7.0
       if: always()
       with:
-        name: Maven Tests
+        name: Unit Tests
         path: "**/target/surefire-reports/*.xml"
+        reporter: java-junit
+        fail-on-error: true
+    - name: Report
+      uses: dorny/test-reporter@v1.7.0
+      if: always()
+      with:
+        name: Integration Tests
+        path: "**/target/failsafe-reports/*.xml"
         reporter: java-junit
         fail-on-error: true
