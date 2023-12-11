@@ -1,12 +1,12 @@
-package com.rijpert.lib.wordcounter;
+package com.rijpert.wordcounter.lib;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class WordFrequencyAnalyzerTest {
 
@@ -119,7 +119,7 @@ public class WordFrequencyAnalyzerTest {
                 """;
         List<WordFrequency> result = wordFrequencyAnalyzer.calculateMostFrequentNWords(text, 6);
 
-        assertThat(result).isNotNull();
+        Assertions.assertThat(result).isNotNull();
         assertThat(result.size()).isEqualTo(6);
         assertThat(result.get(0).getWord()).isEqualTo("in");
         assertThat(result.get(0).getFrequency()).isEqualTo(3);
@@ -140,11 +140,11 @@ public class WordFrequencyAnalyzerTest {
         String text = "The dog is walking in Dog City";
         List<WordFrequency> result = wordFrequencyAnalyzer.calculateMostFrequentNWords(text, 2);
 
-        assertThat(result).isNotNull();
+        Assertions.assertThat(result).isNotNull();
         assertThat(result.size()).isEqualTo(2);
         assertThat(result.get(0).getWord()).isEqualTo("dog");
         assertThat(result.get(0).getFrequency()).isEqualTo(2);
-        assertThat(result).isNotNull();
+        Assertions.assertThat(result).isNotNull();
         assertThat(result.get(1).getWord()).isEqualTo("city");
         assertThat(result.get(1).getFrequency()).isEqualTo(1);
     }

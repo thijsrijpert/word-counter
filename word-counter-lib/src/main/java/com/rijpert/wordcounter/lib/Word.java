@@ -1,4 +1,4 @@
-package com.rijpert.lib.wordcounter;
+package com.rijpert.wordcounter.lib;
 
 import java.util.Objects;
 import java.util.regex.Pattern;

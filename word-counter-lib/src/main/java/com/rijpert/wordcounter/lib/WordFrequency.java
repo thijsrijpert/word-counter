@@ -1,4 +1,4 @@
-package com.rijpert.lib.wordcounter;
+package com.rijpert.wordcounter.lib;
 
 /**
  * Class that contains a word and the frequency it has in a certain text.
