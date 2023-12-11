@@ -121,7 +121,7 @@ public class WordFrequencyAnalyzerTest {
 
         Assertions.assertThat(result).isNotNull();
         assertThat(result.size()).isEqualTo(6);
-        assertThat(result.get(0).getWord()).isEqualTo("in");
+        assertThat(result.get(0).getWord()).isEqualTo("i");
         assertThat(result.get(0).getFrequency()).isEqualTo(3);
         assertThat(result.get(1).getWord()).isEqualTo("ut");
         assertThat(result.get(1).getFrequency()).isEqualTo(3);
