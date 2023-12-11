@@ -15,6 +15,8 @@ The RPC api has 3 endpoints
 - calculateMostFrequentNWords, to get a list of the most frequent words
 - calculateHighestFrequency, to get the frequency of the most frequent word
 
+Instructions on how to use these endpoints can be found in the openapi spec at word-counter-web/src/main/resources/openapi
+
 ### Architecture
 
 The project consists of 2 maven modules
