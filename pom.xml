@@ -11,6 +11,7 @@
 
   <modules>
     <module>word-counter-lib</module>
+    <module>word-counter-api</module>
   </modules>
       
   <properties>
